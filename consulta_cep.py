@@ -44,6 +44,14 @@ while True:
             print("CEP não encontrado.") 
             continue 
         exibir_endereco(dados) 
+        historico.append(dados)
+    elif opcao == "2":
+        if not historico:
+            print("Nenhuma busca feita ainda.")
+        else:
+            print("\n--- Histórico de Buscas ---")
+            for item in historico:
+                print(item["cep"], "-", item["logradouro"])
     elif opcao == "3": 
         with open("historico.json", "w") as arquivo: 
             json.dump(historico, arquivo, indent=2, ensure_ascii=False) 
